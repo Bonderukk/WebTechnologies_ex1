@@ -131,7 +131,7 @@ nav .nav-list a {
         top: 100%;
         left: 0;
         right: 0;
-        background-color: #fff;
+        background-color: var(--vibrant-red);
         box-shadow: 0 2px 5px rgba(0,0,0,0.1);
         transform: scale(1, 0);
         transform-origin: top;
@@ -173,7 +173,7 @@ main {
 .content {
     background-color: var(--off-white);
     border: none;
-    padding: 20px;
+    padding: 5px;
 }
 
 .timetable-content {
@@ -232,7 +232,7 @@ table.timetable {
     min-width: 600px;
     border-collapse: separate;
     border-spacing: 0;
-    margin-top: 20px;
+    margin-top: 10px;
     table-layout: fixed;
     border: 2px solid var(--dark-blue);
 }
@@ -290,6 +290,7 @@ table.timetable td:first-child {
 @media screen and (max-width: 768px) {
     .timetable-content {
         overflow-x: auto;
+        padding: 15px;
     }
     
     table.timetable {
@@ -298,9 +299,11 @@ table.timetable td:first-child {
 }
 
 table.timetable td {
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
+    overflow: visible;
+    white-space: normal; /* Changed from nowrap to normal */
+    word-wrap: break-word; /* Allows long words to be broken and wrap */
+    max-width: 150px; /* Adjust this value as needed */
+    hyphens: auto; /* Enables automatic hyphenation */
 }
 
 table.timetable td:hover {
@@ -359,6 +362,14 @@ table.timetable td:hover {
     cursor: pointer;
 }
 
+/* Add media query for smaller screens */
+@media screen and (max-width: 768px) {
+    .dot {
+        width: 1rem; /* Adjust the width for smaller screens */
+        height: 1rem; /* Adjust the height for smaller screens */
+    }
+}
+
 .info {
     display: none;
     position: absolute;
@@ -388,7 +399,7 @@ table.timetable td:hover {
 
 .interactive-area:hover .info {
     display: block;
-    bottom: 100%; /* Adjust this value to position the info closer to the dot */
+    bottom: 100%;
 }
 
 .info-toggle:checked + .dot + .info {
@@ -407,6 +418,7 @@ a {
     color: var(--vibrant-red);
     text-decoration: none;
     transition: color 0.3s ease;
+
 }
 
 a:hover, a:focus {
@@ -425,12 +437,16 @@ a:hover, a:focus {
 
 .cv {
     display: flex;
+    flex-wrap: wrap; /* Allow columns to wrap on smaller screens */
     gap: 20px; /* Adjust the gap between columns as needed */
+    width: 100%; /* Ensure the main element takes the full width */
+    overflow: hidden; /* Prevent overflow */
 }
 
 .column {
     flex: 1;
     padding: 20px;
+    min-width: 300px; /* Ensure columns don't get too narrow */
 }
 
 .column.left {
@@ -440,3 +456,15 @@ a:hover, a:focus {
 .column.right {
     background-color: var(--off-white); /* Adjust the color as needed */
 }
+
+/* Add media query for smaller screens */
+@media screen and (max-width: 768px) {
+    .cv {
+        flex-direction: column; /* Stack columns vertically on smaller screens */
+    }
+}
+
+* {
+    box-sizing: border-box; /* Include padding and border in the element's total width and height */
+}
+
