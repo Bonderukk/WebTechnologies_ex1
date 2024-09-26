@@ -1,0 +1,442 @@
+:root {
+    --dark-blue: #1A2A3A;
+    --vibrant-red: #FF0000;
+    --light-blue: #00A8E8;
+    --off-white: #F0F2F5;
+    --black: #000000;
+    --light-gray: #CCCCCC;
+}
+
+@font-face {
+    font-family: 'Foodcan';
+    src: url('../css/fonts/foodcan-font/FoodcanPersonalUseBold-nROog.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'Metal Vengeance';
+    src: url('../css/fonts/metal-vengeance-font/MetalVengeance-0WqV9.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'Metal Vengeance';
+}
+
+h1 { font-size: 2.5em; }
+h2 { font-size: 2em; }
+h3 { font-size: 1.75em; }
+h4 { font-size: 1.5em; }
+h5 { font-size: 1.25em; }
+h6 { font-size: 1em; }
+
+h1 {
+    font-size: 2.5em;
+    margin-bottom: 20px;
+    color: var(--vibrant-red);
+}
+
+h2 {
+    font-size: 2em;
+    margin-top: 30px;
+    color: var(--vibrant-red);
+}
+
+nav, nav .nav-list a {
+    font-family: 'Foodcan', cursive, sans-serif;
+}
+
+nav {
+    background-color: var(--dark-blue);
+    padding: 1rem;
+    position: relative;
+    z-index: 1000;
+}
+
+.nav-toggle {
+    display: none;
+}
+
+.nav-toggle-label {
+    display: none;
+    position: absolute;
+    top: 0;
+    right: 0;
+    margin-right: 1rem;
+    height: 100%;
+    align-items: center;
+}
+
+.nav-toggle-label span,
+.nav-toggle-label span::before,
+.nav-toggle-label span::after {
+    display: block;
+    background: var(--vibrant-red);
+    height: 2px;
+    width: 2em;
+    border-radius: 2px;
+    position: relative;
+}
+
+.nav-toggle-label span::before,
+.nav-toggle-label span::after {
+    content: '';
+    position: absolute;
+}
+
+.nav-toggle-label span::before {
+    bottom: 7px;
+}
+
+.nav-toggle-label span::after {
+    top: 7px;
+}
+
+nav .nav-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+}
+
+nav .nav-list li {
+    margin-left: 1em;
+    margin-bottom: 0;
+}
+
+nav .nav-list a {
+    color: var(--off-white);
+    text-decoration: none;
+    font-size: 1.2rem;
+    text-transform: uppercase;
+}
+
+nav .nav-list a:hover, nav .nav-list a:focus {
+    color: var(--vibrant-red);
+}
+
+nav .nav-list a {
+    font-size: 1.4rem;
+}
+
+@media screen and (max-width: 768px) {
+    .nav-toggle-label {
+        display: flex;
+    }
+
+    nav .nav-list {
+        display: flex;
+        flex-direction: column;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        background-color: #fff;
+        box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        transform: scale(1, 0);
+        transform-origin: top;
+        transition: transform 0.3s ease-out;
+    }
+
+    nav .nav-list li {
+        text-align: center;
+        margin: 0;
+        opacity: 0;
+        transition: opacity 0.2s ease-out 0.1s;
+    }
+
+    nav .nav-list a {
+        display: block;
+        padding: 1em;
+    }
+
+    .nav-toggle:checked ~ .nav-list {
+        transform: scale(1, 1);
+    }
+
+    .nav-toggle:checked ~ .nav-list li {
+        opacity: 1;
+        transition: opacity 0.2s ease-out 0.2s;
+    }
+}
+
+main {
+    display: block;
+    padding: 40px;
+    max-width: 1200px;
+    margin: 20px auto;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1)
+}
+
+.content {
+    background-color: var(--off-white);
+    border: none;
+    padding: 20px;
+}
+
+.timetable-content {
+    font-size: 0.8em;
+    width: 100%;
+    overflow-x: auto;
+    padding: 20px;
+    box-sizing: border-box;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.profile-image {
+    float: left;
+    margin-right: 20px;
+    margin-bottom: 10px;
+    max-width: 150px;
+    height: auto;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+p {
+    margin-bottom: 15px;
+}
+
+aside {
+    background-color: var(--light-gray);
+    border-left: 4px solid var(--vibrant-red);
+    padding: 20px;
+    margin-top: 20px;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+blockquote {
+    font-style: italic;
+    color: #555;
+    font-size: 1.2em;
+}
+
+blockquote p {
+    line-height: 1.6;
+}
+
+ul {
+    padding-left: 20px;
+    list-style-type: disc;
+}
+
+ul li {
+    margin-bottom: 10px;
+}
+
+table.timetable {
+    width: 100%;
+    min-width: 600px;
+    border-collapse: separate;
+    border-spacing: 0;
+    margin-top: 20px;
+    table-layout: fixed;
+    border: 2px solid var(--dark-blue);
+}
+
+table.timetable th, table.timetable td {
+    border: 1px solid var(--dark-blue);
+    padding: 4px;
+    text-align: center;
+    vertical-align: middle;
+    min-width: 40px;
+    font-size: 0.8em;
+}
+
+table.timetable th {
+    background-color: var(--dark-blue);
+    color: var(--off-white);
+    height: 30px;
+    font-weight: bold;
+    position: sticky;
+    top: 0;
+    z-index: 10;
+}
+
+table.timetable td {
+    height: 60px;
+    font-weight: bold;
+    color: var(--black);
+}
+
+table.timetable tbody tr:nth-of-type(even) td {
+    background-color: var(--off-white);
+}
+
+table.timetable tbody tr:nth-of-type(odd) td {
+    background-color: var(--light-gray);
+}
+
+table.timetable td.lecture {
+    background-color: rgba(221, 15, 15, 0.753) !important;
+}
+
+table.timetable td.exercise {
+    background-color: rgba(128, 18, 18, 0.568) !important;
+}
+
+table.timetable th:first-child,
+table.timetable td:first-child {
+    width: 10%;
+    font-weight: bold;
+    background-color: var(--dark-blue) !important;
+    color: var(--off-white);
+    border-right: 2px solid var(--dark-blue);
+}
+
+@media screen and (max-width: 768px) {
+    .timetable-content {
+        overflow-x: auto;
+    }
+    
+    table.timetable {
+        min-width: 100%;
+    }
+}
+
+table.timetable td {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+table.timetable td:hover {
+    white-space: normal;
+    overflow: visible;
+    position: relative;
+    z-index: 1;
+}
+
+@media screen and (max-width: 480px) {
+    table.timetable th,
+    table.timetable td {
+        padding: 2px;
+        font-size: 0.7em;
+    }
+    
+    table.timetable td {
+        height: 50px;
+    }
+}
+
+.interactive-image-container {
+    position: relative;
+    max-width: 100%;
+    margin: 0 auto;
+    z-index: 1;
+}
+
+.interactive-image {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+
+.interactive-area {
+    position: absolute;
+    width: 30px;
+    height: 30px;
+}
+
+.info-toggle {
+    display: none;
+}
+
+.dot {
+    display: block;
+    width: 20px;
+    height: 20px;
+    background-color: var(--vibrant-red);
+    border: 2px solid var(--off-white);
+    border-radius: 50%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    cursor: pointer;
+}
+
+.info {
+    display: none;
+    position: absolute;
+    background-color: rgba(26, 42, 58, 0.8);
+    color: var(--off-white);
+    padding: 10px 15px;
+    border-radius: 5px;
+    font-size: 16px;
+    line-height: 1.4;
+    white-space: normal;
+    width: 200px;
+    bottom: 130%;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 10;
+}
+
+.info a {
+    color: var(--light-blue);
+    text-decoration: none;
+}
+
+.info a:hover, .info a:focus {
+    color: var(--vibrant-red);
+    text-decoration: underline;
+}
+
+.interactive-area:hover .info {
+    display: block;
+    bottom: 100%; /* Adjust this value to position the info closer to the dot */
+}
+
+.info-toggle:checked + .dot + .info {
+    display: block;
+}
+
+@media screen and (max-width: 768px) {
+    .info {
+        width: 180px;
+        font-size: 14px;
+        bottom: 120%;
+    }
+}
+
+a {
+    color: var(--vibrant-red);
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+a:hover, a:focus {
+    color: var(--light-blue);
+    text-decoration: underline;
+}
+
+.info a {
+    color: var(--light-blue);
+    text-decoration: underline;
+}
+
+.info a:hover, .info a:focus {
+    color: var(--vibrant-red);
+}
+
+.cv {
+    display: flex;
+    gap: 20px; /* Adjust the gap between columns as needed */
+}
+
+.column {
+    flex: 1;
+    padding: 20px;
+}
+
+.column.left {
+    background-color: var(--light-gray); /* Adjust the color as needed */
+}
+
+.column.right {
+    background-color: var(--off-white); /* Adjust the color as needed */
+}
